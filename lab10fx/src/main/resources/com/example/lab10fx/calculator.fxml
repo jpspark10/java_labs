@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FourthTask.Calculator">
+   <children>
+      <Button layoutX="119.0" layoutY="129.0" mnemonicParsing="false" onAction="#seven" text="7" />
+      <Button layoutX="171.0" layoutY="129.0" mnemonicParsing="false" onAction="#eight" text="8" />
+      <Button layoutX="223.0" layoutY="129.0" mnemonicParsing="false" onAction="#nine" text="9" />
+      <Button layoutX="274.0" layoutY="129.0" mnemonicParsing="false" onAction="#divide" text="/" />
+      <Button layoutX="119.0" layoutY="154.0" mnemonicParsing="false" onAction="#four" text="4" />
+      <Button layoutX="171.0" layoutY="154.0" mnemonicParsing="false" onAction="#five" text="5" />
+      <Button layoutX="223.0" layoutY="154.0" mnemonicParsing="false" onAction="#six" text="6" />
+      <Button layoutX="274.0" layoutY="154.0" mnemonicParsing="false" onAction="#multiply" text="*" />
+      <Button layoutX="119.0" layoutY="179.0" mnemonicParsing="false" onAction="#one" text="1" />
+      <Button layoutX="171.0" layoutY="179.0" mnemonicParsing="false" onAction="#two" text="2" />
+      <Button layoutX="223.0" layoutY="179.0" mnemonicParsing="false" onAction="#three" text="3" />
+      <Button layoutX="274.0" layoutY="179.0" mnemonicParsing="false" onAction="#minus" text="-" />
+      <Button layoutX="119.0" layoutY="204.0" mnemonicParsing="false" onAction="#zero" text="0" />
+      <Button layoutX="171.0" layoutY="204.0" mnemonicParsing="false" onAction="#point" text="." />
+      <Button layoutX="223.0" layoutY="204.0" mnemonicParsing="false" onAction="#equals" text="=" />
+      <Button layoutX="274.0" layoutY="204.0" mnemonicParsing="false" onAction="#plus" text="+" />
+      <TextField editable="false" layoutX="116.0" layoutY="78.0" />
+   </children>
+</AnchorPane>
