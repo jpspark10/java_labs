@@ -22,6 +22,8 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
+import static java.lang.Math.max;
+
 public class SnakeGame extends Application {
     private static final int WIDTH = 600;
     private static final int HEIGHT = 400;
@@ -36,6 +38,7 @@ public class SnakeGame extends Application {
     private List<int[]> snake = new ArrayList<>();
     private int[] food = new int[2];
     private int score = 0;
+    private int highestScore = 0;
     private UUID clientId;
 
     private Socket socket;
@@ -71,8 +74,26 @@ public class SnakeGame extends Application {
                 direction = Direction.RIGHT;
             }
         });
+        Platform.runLater(() -> {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Game Menu");
+            alert.setHeaderText("Game Menu");
+            alert.setContentText("Start game");
 
-        startGame();
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                startGame();
+                out.println("Game start" );
+            } else {
+                try {
+                    out.println("Client disconnected: " + clientId);
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Platform.exit();
+            }
+        });
 
         primaryStage.setOnCloseRequest(event -> {
             try {
@@ -168,11 +189,13 @@ public class SnakeGame extends Application {
         gc.fillRect(food[0], food[1], TILE_SIZE, TILE_SIZE);
 
         gc.setFill(Color.WHITE);
-        gc.fillText("Score: " + score, 10, 10);
+        gc.fillText("Score: " + score, 10, 20);
+        gc.fillText("Top score:" + highestScore,10,40);
     }
 
     private void gameOver() {
         running = false;
+        highestScore = max(score,highestScore);
         out.println("Score: " + score);
 
         Platform.runLater(() -> {
@@ -201,8 +224,3 @@ public class SnakeGame extends Application {
         launch(args);
     }
 }
-
-
-
-
-
